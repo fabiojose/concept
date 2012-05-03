@@ -1,12 +1,14 @@
 package com.github.fabiojose.concept.bean.register;
 
+import java.util.Collections;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import com.github.fabiojose.concept.bean.IPair;
 import com.github.fabiojose.concept.bean.Ownership;
 
-public class Order extends Ownership {
+public class Order extends Ownership implements IPaper {
 	private static final long serialVersionUID = -6792979144698450075L;
 
 	private Long number;
@@ -94,6 +96,17 @@ public class Order extends Ownership {
 	public String toString() {
 		return "Order [number=" + number + ", date=" + date + ", priority="
 				+ priority + ", type=" + type + ", message=" + message + "]";
+	}
+
+	@Override
+	public Set<IItem> items() {
+		
+		final Set<IItem> _result = new HashSet<IItem>();
+		for(OrderItem _item : getItems()){
+			_result.add(_item);
+		}
+		
+		return Collections.unmodifiableSet(_result);
 	}
 	
 }

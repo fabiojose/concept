@@ -23,4 +23,5 @@ public interface IItem {
 	void setDiscriminators(Map<String, IPair<String, String>> discriminators);
 	Map<String, IPair<String, String>> getDiscriminators();
 	
+	
 }

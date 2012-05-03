@@ -1,6 +1,8 @@
 package com.github.fabiojose.concept.bean.register;
 
+import java.util.Collections;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import com.github.fabiojose.concept.bean.ICustomer;
@@ -8,7 +10,7 @@ import com.github.fabiojose.concept.bean.IPair;
 import com.github.fabiojose.concept.bean.Ownership;
 import com.github.fabiojose.concept.bean.entity.Business;
 
-public class Receipt extends Ownership {
+public class Receipt extends Ownership implements IPaper {
 	private static final long serialVersionUID = 4448516267306271503L;
 
 	private Business origin;
@@ -76,5 +78,59 @@ public class Receipt extends Ownership {
 	}
 	public void setItems(Set<ReceiptItem> items) {
 		this.items = items;
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result
+				+ ((customer == null) ? 0 : customer.hashCode());
+		result = prime * result + ((number == null) ? 0 : number.hashCode());
+		result = prime * result + ((origin == null) ? 0 : origin.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Receipt other = (Receipt) obj;
+		if (customer == null) {
+			if (other.customer != null)
+				return false;
+		} else if (!customer.equals(other.customer))
+			return false;
+		if (number == null) {
+			if (other.number != null)
+				return false;
+		} else if (!number.equals(other.number))
+			return false;
+		if (origin == null) {
+			if (other.origin != null)
+				return false;
+		} else if (!origin.equals(other.origin))
+			return false;
+		return true;
+	}
+	@Override
+	public String toString() {
+		return "Receipt [origin=" + origin + ", customer=" + customer
+				+ ", number=" + number + ", date=" + date + ", emission="
+				+ emission + ", priority=" + priority + ", type=" + type
+				+ ", message=" + message + "]";
+	}
+	@Override
+	public Set<IItem> items() {
+		
+		final Set<IItem> _result = new HashSet<IItem>();
+		for(ReceiptItem _item : getItems()){
+			_result.add(_item);
+		}
+		
+		return Collections.unmodifiableSet(_result);
 	}	
+	
 }

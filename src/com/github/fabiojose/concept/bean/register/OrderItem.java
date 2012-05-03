@@ -102,5 +102,4 @@ public class OrderItem extends Being implements IItem {
 				+ ", price=" + price + ", priority=" + priority
 				+ ", discriminators=" + discriminators + "]";
 	}
-	
 }

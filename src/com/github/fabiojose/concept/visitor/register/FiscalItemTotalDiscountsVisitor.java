@@ -5,17 +5,22 @@ import com.github.fabiojose.concept.bean.Unit;
 import com.github.fabiojose.concept.bean.register.IFiscalItem;
 import com.github.fabiojose.concept.bean.register.IItem;
 
-public final class FiscalItemTotalDiscountsVisitor implements Visitor<IFiscalItem, Double> {
+public final class FiscalItemTotalDiscountsVisitor implements Visitor<IFiscalItem, Unit> {
 
-	private Visitor<IItem, Double> value = new ItemRawValue();
+	private Visitor<IItem, Unit> value = new ItemRawValue();
 	
 	@Override
-	public Double visit(final IFiscalItem target) {
+	public Unit visit(final IFiscalItem target) {
 
-		double _result = 0;
+		final Unit _result = new Unit();
+		_result.setSymbol(target.getPrice().getSymbol());
+		
+		double _value = 0;
 		for(Unit _discount : target.getDiscounts().values()){
-			_result += _discount.calculate(value.visit(target));
+			_value += _discount.calculate(value.visit(target).getValue());
 		}
+		
+		_result.setValue(_value);
 		
 		return _result;
 	}
