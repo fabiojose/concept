@@ -1,6 +1,6 @@
 package com.github.fabiojose.concept.bean;
 
-public class Ownership extends Being {
+public class Ownership extends Being implements IOwnership {
 	private static final long serialVersionUID = 9111396272474491671L;
 
 	private Identifiable owner;

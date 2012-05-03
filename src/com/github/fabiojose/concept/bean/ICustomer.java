@@ -16,7 +16,7 @@ public interface ICustomer {
 	void setDocument(String document);
 	
 	Set<Address> getAddresses();
-	void setAddresses(Set<Address> address);
+	void setAddresses(Set<Address> addresses);
 	
 	Set<Phone> getPhones();
 	void setPhones(Set<Phone> phones);
