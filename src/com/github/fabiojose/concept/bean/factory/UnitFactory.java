@@ -2,6 +2,8 @@ package com.github.fabiojose.concept.bean.factory;
 
 import java.util.MissingResourceException;
 
+import org.apache.commons.beanutils.BeanUtils;
+
 import com.github.fabiojose.concept.Constants;
 import com.github.fabiojose.concept.Context;
 import com.github.fabiojose.concept.bean.IPair;
@@ -89,5 +91,12 @@ public final class UnitFactory {
 	public Unit length(final String sicode, final double value){
 		
 		return newInstance(sicode, value, LocaleManager.LENGTH);
+	}
+	
+	public Unit clone(final Unit origin){
+		
+		final Unit _result = new Unit();
+		BeanUtils.c
+		return _result;
 	}
 }
