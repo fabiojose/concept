@@ -17,7 +17,7 @@ private Visitor<IItem, Unit> value = new ItemRawValue();
 		
 		double _value = 0;
 		for(Unit _discount : target.getAdjustments().values()){
-			_value += _discount.calculate(value.visit(target).getValue());
+			_value += _discount.calculate(value.visit(target).getValue()).getValue();
 		}
 		
 		_result.setValue(_value);

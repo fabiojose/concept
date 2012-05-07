@@ -1,7 +1,15 @@
 package com.github.fabiojose.concept.control;
 
-public interface Calculator {
+import com.github.fabiojose.concept.bean.Unit;
 
-	double calculate(double value1, double value2);
+public interface Calculator extends ICalculator<Double, Double> {
+
+	Double calculate(Double value1, Double value2);
 	
+	Double calculate(Double value);
+	
+	Unit getValue();
+	void setValue(Unit value);
+	
+	Calculator inverse();
 }

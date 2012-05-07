@@ -1,5 +1,6 @@
 package com.github.fabiojose.concept.bean.factory;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.MissingResourceException;
 
 import org.apache.commons.beanutils.BeanUtils;
@@ -54,7 +55,10 @@ public final class UnitFactory {
 			}
 			
 			final Class<?> _calculator = Class.forName(_scalculator);
-			_result.setCalculator((Calculator)_calculator.newInstance());
+			final Calculator _instance = (Calculator)_calculator.newInstance();
+			_instance.setValue(_result);
+			
+			_result.calculator(_instance);
 			
 		}catch(MissingResourceException _e){
 		}catch(ClassNotFoundException _e){
@@ -96,7 +100,16 @@ public final class UnitFactory {
 	public Unit clone(final Unit origin){
 		
 		final Unit _result = new Unit();
-		BeanUtils.c
+		try{
+			BeanUtils.copyProperties(_result, origin);
+		}catch(IllegalAccessException _e){
+			throw new ConceptException(_e.getMessage(), _e);
+			
+		}catch(InvocationTargetException _e){
+			throw new ConceptException(_e.getMessage(), _e);
+			
+		}
+		
 		return _result;
 	}
 }

@@ -17,7 +17,7 @@ public final class FiscalItemTotalTaxesVisitor implements Visitor<IFiscalItem, U
 		
 		double _value = 0D;
 		for(Unit _taxe : target.getTaxes().values()){
-			_value += _taxe.calculate(value.visit(target).getValue());
+			_value += _taxe.calculate(value.visit(target).getValue()).getValue();
 		}
 		
 		_result.setValue(_value);

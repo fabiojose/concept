@@ -17,7 +17,7 @@ public final class FiscalItemTotalDiscountsVisitor implements Visitor<IFiscalIte
 		
 		double _value = 0;
 		for(Unit _discount : target.getDiscounts().values()){
-			_value += _discount.calculate(value.visit(target).getValue());
+			_value += _discount.calculate(value.visit(target).getValue()).getValue();
 		}
 		
 		_result.setValue(_value);
