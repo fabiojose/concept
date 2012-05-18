@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:concept xmlns:p="http://www.github.org/concept" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.github.org/concept concept.xsd ">
+  <p:configuration>
+    <p:factories>
+    
+      <p:factory>
+        <p:bean>com.github.fabiojose.concept.bean.stock.Area</p:bean>
+        <p:class>com.github.fabiojose.concept.factory.AreaFactory</p:class>
+      </p:factory>
+      
+    </p:factories>
+  </p:configuration>
+</p:concept>

@@ -11,6 +11,7 @@ public class Area extends Ownership {
 	private static final long serialVersionUID = 1L;
 
 	private String code;
+	private String relativeCode;
 	private Map<String, Unit> metrics;
 	
 	private Area parent;
@@ -24,11 +25,20 @@ public class Area extends Ownership {
 	public void setCode(String code) {
 		this.code = code;
 	}
+	public String getRelativeCode() {
+		return relativeCode;
+	}
+	public void setRelativeCode(String relativeCode) {
+		this.relativeCode = relativeCode;
+	}
 	public Map<String, Unit> getMetrics() {
 		return metrics;
 	}
 	public void setMetrics(Map<String, Unit> metrics) {
 		this.metrics = metrics;
+	}
+	public void addMetric(final String name, final Unit metric){
+		getMetrics().put(name, metric);
 	}
 	public Area getParent() {
 		return parent;
@@ -42,11 +52,17 @@ public class Area extends Ownership {
 	public void setChildren(Set<Area> children) {
 		this.children = children;
 	}
+	public void addChild(Area child){
+		getChildren().add(child);
+	}
 	public Set<IPair<Integer, String>> getClassifications() {
 		return classifications;
 	}
 	public void setClassifications(Set<IPair<Integer, String>> classifications) {
 		this.classifications = classifications;
+	}
+	public void addClassification(final IPair<Integer, String> classification){
+		getClassifications().add(classification);
 	}
 	@Override
 	public int hashCode() {
@@ -57,6 +73,7 @@ public class Area extends Ownership {
 		result = prime * result + ((code == null) ? 0 : code.hashCode());
 		return result;
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -81,9 +98,9 @@ public class Area extends Ownership {
 	
 	@Override
 	public String toString() {
-		return "Area [code=" + code + ", metrics=" + metrics
-				+ ", classifications=" + classifications + ", getName()="
-				+ getName() + "]";
+		return "Area [code=" + code + ", relativeCode=" + relativeCode + ", metrics="
+				+ metrics + ", children=" + children + ", classifications="
+				+ classifications + "]";
 	}
 	
 }

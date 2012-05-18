@@ -7,6 +7,7 @@ import com.github.fabiojose.concept.bean.ICustomer;
 import com.github.fabiojose.concept.bean.Identifiable;
 import com.github.fabiojose.concept.bean.Ownership;
 import com.github.fabiojose.concept.bean.Phone;
+import com.github.fabiojose.concept.bean.Social;
 import com.github.fabiojose.concept.bean.place.Address;
 
 public class Person extends Ownership implements Identifiable, ICustomer {
@@ -17,6 +18,8 @@ public class Person extends Ownership implements Identifiable, ICustomer {
 	private Date birthday;
 	private Set<Address> addresses;
 	private Set<Phone> phones;
+	
+	private Set<Social> socials;
 
 	public String getDocument() {
 		return document;
@@ -54,6 +57,12 @@ public class Person extends Ownership implements Identifiable, ICustomer {
 		this.phones = phones;
 	}
 	
+	public Set<Social> getSocials() {
+		return socials;
+	}
+	public void setSocials(Set<Social> socials) {
+		this.socials = socials;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;

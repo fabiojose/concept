@@ -1,6 +1,10 @@
 package com.github.fabiojose.concept;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Constants {
+	public static final int ROOT_LAYER = 0;
 
 	public static final int INT_0 = 0;
 	public static final int INT_1 = 1;
@@ -19,4 +23,12 @@ public class Constants {
 	public static final String STRING_DOT_CALCULATOR = ".calculator";
 	public static final String STRING_GLOBAL = "GLOBAL";
 
+	public static final class SYSTEM {
+		public static final String CONCEPT_XML = "concept.xml";
+		public static final Set<String> NEEDED_FILES = new HashSet<String>();
+		static{
+			NEEDED_FILES.add(CONCEPT_XML);
+		};
+		public static final String CONCEPT_WORKSPACE  = "concept.workspace";
+	}
 }

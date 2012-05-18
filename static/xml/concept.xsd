@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.github.org/concept" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.github.org/concept">
+
+    <xsd:complexType name="Configuration">
+    	<xsd:sequence>
+    		<xsd:element name="factories" type="Factories" maxOccurs="1"
+    			minOccurs="0">
+    		</xsd:element>
+    		<xsd:element name="required" type="Required" maxOccurs="1" minOccurs="0"></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="Factory">
+    	<xsd:sequence>
+    		<xsd:element name="name" type="xsd:string" maxOccurs="1"
+    			minOccurs="0">
+    		</xsd:element>
+            <xsd:element name="bean" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+            <xsd:element name="class" type="xsd:string" maxOccurs="1"
+    			minOccurs="1">
+    		</xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="Factories">
+    	<xsd:sequence>
+    		<xsd:element name="factory" type="Factory" maxOccurs="unbounded" minOccurs="1"></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="Concept">
+    	<xsd:sequence>
+    		<xsd:element name="configuration" type="Configuration" maxOccurs="1" minOccurs="1"></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="concept" type="Concept"></xsd:element>
+
+    <xsd:complexType name="File">
+    	<xsd:sequence>
+    		<xsd:element name="description" type="xsd:string"
+    			maxOccurs="1" minOccurs="0">
+    		</xsd:element>
+    	</xsd:sequence>
+    	<xsd:attribute name="type" use="required">
+    		<xsd:simpleType>
+    			<xsd:restriction base="xsd:string">
+    				<xsd:enumeration value="FILE"></xsd:enumeration>
+    				<xsd:enumeration value="DIRECTORY"></xsd:enumeration>
+    			</xsd:restriction>
+    		</xsd:simpleType>
+    	</xsd:attribute>
+    	<xsd:attribute name="path" type="xsd:string" use="required"></xsd:attribute>
+    </xsd:complexType>
+    
+
+    <xsd:complexType name="Files">
+    	<xsd:sequence>
+    		<xsd:element name="file" type="File" maxOccurs="unbounded" minOccurs="1"></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="Required">
+    	<xsd:sequence>
+    		<xsd:element name="files" type="Files" maxOccurs="1" minOccurs="1"></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

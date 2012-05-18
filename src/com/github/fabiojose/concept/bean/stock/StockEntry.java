@@ -12,6 +12,7 @@ public class StockEntry extends Ownership {
 	
 	private Area location;
 	private Set<StockPhysical> physicals;
+	
 	public Date getDate() {
 		return date;
 	}
@@ -30,5 +31,9 @@ public class StockEntry extends Ownership {
 	public void setPhysicals(Set<StockPhysical> physicals) {
 		this.physicals = physicals;
 	}
-	
+	@Override
+	public String toString() {
+		return "StockEntry [date=" + date + ", location=" + location
+				+ ", physicals=" + physicals + "]";
+	}
 }
